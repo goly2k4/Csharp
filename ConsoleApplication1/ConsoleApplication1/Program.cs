@@ -11,30 +11,45 @@ namespace ConsoleApplication1
         static int fun_read()
         {
             ConsoleKeyInfo a = Console.ReadKey();
+            if (a.KeyChar.ToString() == "q")
+            Environment.Exit(0);
+
             return  int.Parse(a.KeyChar.ToString());
         }
 
 
         static int fun_f(int num)
         {
-           
-            if (num>0)
-                num *= fun_f(num - 1);
-           
-                return num;
+            int a;
+            
+            if (num == 1)
+                return 1;
+            //a= fun_f(num - 1);
+            num*= fun_f(num - 1);
+            //num *= fun_f(num - 1);
+
+            Console.WriteLine("run: " + num);
+            return num;
+
         }
 
 
         static void Main(string[] args)
         {
+            int num;
 
-            //Console.WriteLine("abc");
-            int num=fun_read();
-            //Console.WriteLine(num+5);
-            fun_f(num);
-            Console.WriteLine(num);
+        while (true)
+            {
+                Console.WriteLine("enter:");
+                num = fun_read();
+                Console.WriteLine();
 
-            num = fun_read(); //hold screen
+                num= fun_f(num);
+                Console.WriteLine(num);
+                Console.WriteLine("____________________________________________");
+
+            }
+            
         }
     }
 }
